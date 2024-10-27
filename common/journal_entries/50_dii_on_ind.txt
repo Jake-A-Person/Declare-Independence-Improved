@@ -1,0 +1,197 @@
+﻿je_on_ind = {
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	group = je_group_internal_affairs
+
+	is_shown_when_inactive = {
+		is_subject = yes
+	}
+
+	possible = {
+		is_diplomatic_play_enemy_of = overlord
+	}
+
+
+	immediate = {
+		if = {
+			limit = {is_subject_type = subject_type_protectorate}
+			root = {
+				add_modifier = {
+					name = former_pro
+				}
+			}
+		}
+
+		if = {
+			limit = {is_subject_type = subject_type_dominion}
+			root = {
+				add_modifier = {
+					name = former_domin
+				}
+			}
+		}
+
+		if = {
+			limit = {is_subject_type = subject_type_puppet}
+			root = {
+				add_modifier = {
+					name = former_puppet
+				}
+			}
+		}
+
+		if = {
+			limit = {is_subject_type = subject_type_personal_union}
+			root = {
+				add_modifier = {
+					name = former_per_union
+				}
+			}
+		}
+
+		if = {
+			limit = {is_subject_type = subject_type_vassal}
+			root = {
+				add_modifier = {
+					name = former_vassal
+				}
+			}
+		}
+
+		if = {
+			limit = {is_subject_type = subject_type_tributary}
+			root = {
+				add_modifier = {
+					name = former_trib
+				}
+			}
+		}
+
+		#if overload is not recognised
+		if = {
+			limit = {
+				or = {
+					has_modifier = former_vassal
+					has_modifier = former_trib
+				}
+			}
+			random_diplomatic_play = {
+				limit = {
+
+					}
+				remove_war_goal = {
+					who = root
+					war_goal = independence
+				}
+				add_war_goal = {
+					holder = scope:overlord
+					type = make_vassal
+					target_country = root
+				}
+			}
+
+		}
+		#if overload is recognised
+		else = {
+			random_diplomatic_play = {
+				limit = {
+					has_play_goal = independence
+				}
+				remove_war_goal = {
+					who = root
+					war_goal = independence
+				}
+				add_war_goal = {
+					holder = scope:overlord
+					type = make_puppet
+				}
+			}
+		}
+
+		make_independent = yes
+	}
+
+	complete = {
+		is_diplomatic_play_committed_participant = no
+		is_at_war = no
+		is_subject = no
+	}
+
+	fail = {
+		is_diplomatic_play_committed_participant = no
+		is_at_war = no
+		is_subject = yes
+	}
+
+	on_complete = {
+		if = {
+			limit = {has_modifier = former_pro}
+			remove_modifier = former_pro
+		}
+		else_if = {
+			limit = {has_modifier = former_domin }
+			remove_modifier = former_domin
+		}
+
+		else_if = {
+			limit = {has_modifier = former_puppet }
+			remove_modifier = former_puppet
+		}
+		else_if = {
+			limit = {has_modifier = former_puppet }
+			remove_modifier = former_puppet
+		}
+		else_if = {
+			limit = {has_modifier = former_per_union }
+			remove_modifier = former_per_union
+		}
+		else_if = {
+			limit = {has_modifier = former_vassal }
+			remove_modifier = former_vassal
+		}
+		else_if = {
+			limit = {has_modifier = former_trib }
+			remove_modifier = former_trib
+		}
+
+
+	}
+
+	on_fail = {
+		if = {
+			limit = {has_modifier = former_pro}
+			remove_modifier = former_pro
+			change_subject_type = subject_type_protectorate
+		}
+		else_if = {
+			limit = {has_modifier = former_domin }
+			remove_modifier = former_domin
+			change_subject_type = subject_type_dominion
+		}
+
+		else_if = {
+			limit = {has_modifier = former_puppet }
+			remove_modifier = former_puppet
+			change_subject_type = subject_type_puppet
+		}
+		else_if = {
+			limit = {has_modifier = former_per_union }
+			remove_modifier = former_per_union
+			change_subject_type = subject_type_personal_union
+		}
+		else_if = {
+			limit = {has_modifier = former_vassal }
+			remove_modifier = former_vassal
+			change_subject_type = subject_type_vassal
+		}
+		else_if = {
+			limit = {has_modifier = former_trib }
+			remove_modifier = former_trib
+			change_subject_type = subject_type_tributary
+		}
+	}
+
+
+	weight = 10000
+	should_be_pinned_by_default = yes
+}

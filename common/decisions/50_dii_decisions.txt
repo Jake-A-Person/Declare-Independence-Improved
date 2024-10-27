@@ -1,0 +1,17 @@
+﻿dtnw_dii_l_d = {
+	is_shown = {
+	}
+
+	possible = {
+
+	}
+
+	when_taken = {
+		add_liberty_desire = 100
+	}
+
+	ai_chance = {
+		base = 0		
+	}
+}
+

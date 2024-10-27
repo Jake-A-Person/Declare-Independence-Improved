@@ -1,0 +1,18 @@
+﻿former_pro={
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+}
+former_domin={
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+}
+former_puppet={
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+}
+former_trib={
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+}
+former_vassal={
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+}
+former_per_union={
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+}
